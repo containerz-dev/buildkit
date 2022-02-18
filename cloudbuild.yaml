@@ -7,17 +7,17 @@ steps:
       - --build-arg=DOCKER_VERSION=${_DOCKER_VERSION}
       - --cache-from=moby/buildkit:${_BUILDKIT_VERSION}
       - --cache-from=docker:${_DOCKER_VERSION}
-      - --tag=gcr.io/$PROJECT_ID/buildkit:${_DOCKER_VERSION}-159bb1e677ff
+      - --tag=gcr.io/$PROJECT_ID/buildkit:${_DOCKER_VERSION}-a08d2ea19b0a
       - --target=buildkit
       - .
     env:
       - "DOCKER_BUILDKIT=1"
     waitFor:
-      - "-" 
+      - "-"
 
 images:
-  - "gcr.io/$PROJECT_ID/buildkit:${_DOCKER_VERSION}-159bb1e677ff"
+  - "gcr.io/$PROJECT_ID/buildkit:${_DOCKER_VERSION}-a08d2ea19b0a"
 
 substitutions:
-  _BUILDKIT_VERSION: "nightly@sha256:1666985e3212b121471de9027dd1e5c54ef41155d3c0666a3b6aabf32f697055"  # moby/buildkit@159bb1e677ff
+  _BUILDKIT_VERSION: "master@sha256:15788cf85ad30418f2a0fc5fedf2af689c0b08d383d623eff8fec6bb277cfc69"  # moby/buildkit@a08d2ea19b0a
   _DOCKER_VERSION: "20.10"
